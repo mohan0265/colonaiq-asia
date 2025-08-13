@@ -1,6 +1,10 @@
 import React from 'react'
+import { Page } from '../lib/nav'
 
-export default function ClinicsAndLabsPage() {
+type Props = { onNavigate?: React.Dispatch<React.SetStateAction<Page>> }
+
+
+export default function ClinicsAndLabsPage({ onNavigate }: Props) {
   return (
     <div>
       {/* Hero */}
@@ -22,7 +26,7 @@ export default function ClinicsAndLabsPage() {
         </div>
       </section>
 
-      {/* Intro – mirrors your original page’s intent */}
+      {/* Intro */}
       <section className="section">
         <div className="container">
           <div className="grid grid-2" style={{ alignItems: 'center' }}>
@@ -48,7 +52,7 @@ export default function ClinicsAndLabsPage() {
         </div>
       </section>
 
-      {/* Technical Overview – condensed from original sections */}
+      {/* Technical Overview */}
       <section className="section" style={{ background: 'var(--bg-light)' }}>
         <div className="container">
           <h2 className="section-title">Technical Overview</h2>
@@ -93,7 +97,7 @@ export default function ClinicsAndLabsPage() {
         </div>
       </section>
 
-      {/* Performance & Utility – neutral, no unverified figures */}
+      {/* Performance & Utility */}
       <section className="section">
         <div className="container">
           <div className="grid grid-2" style={{ alignItems: 'center' }}>
@@ -120,7 +124,7 @@ export default function ClinicsAndLabsPage() {
         </div>
       </section>
 
-      {/* Setting up – mirrors your original structure, but kept high-level */}
+      {/* Setting Up */}
       <section className="section" style={{ background: 'var(--bg-light)' }}>
         <div className="container">
           <h2 className="section-title">Setting Up a ColonAiQ® Testing Facility</h2>
@@ -164,7 +168,7 @@ export default function ClinicsAndLabsPage() {
         </div>
       </section>
 
-      {/* Reagents/Platforms – from your original page headings */}
+      {/* Reagents/Platforms */}
       <section className="section">
         <div className="container">
           <h2 className="section-title">Reagents for ColonAiQ® Operation</h2>
@@ -196,11 +200,11 @@ export default function ClinicsAndLabsPage() {
         </div>
       </section>
 
-      {/* References – placeholder until citations cleared */}
+      {/* References */}
       <section className="section" style={{ background: 'var(--bg-light)' }}>
         <div className="container">
           <h2 className="section-title">References</h2>
-          <div className="card">
+        <div className="card">
             <p>
               A formally referenced bibliography (peer-reviewed publications and official announcements) will be linked here upon permission.
               To request specific documentation, please <a className="link" href="/contact">contact us</a>.

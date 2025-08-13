@@ -1,47 +1,39 @@
 import React, { useState } from 'react'
-import Header from './components/Header'
-import Footer from './components/Footer'
+import { Page } from './lib/nav'
+
 import HomePage from './pages/index'
 import PatientsPage from './pages/patients'
-import ClinicsLabsPage from './pages/clinics-and-labs'
+import ClinicsAndLabsPage from './pages/clinics-and-labs'
 import ClinicalEvidencePage from './pages/clinical-evidence'
 import InvestorsPage from './pages/investors'
 import ContactPage from './pages/contact'
 
-type Page = 'home' | 'patients' | 'clinics-labs' | 'clinical-evidence' | 'investors' | 'contact'
+import Header from './components/Header'
+import Footer from './components/Footer'
 
-function App() {
-  const [currentPage, setCurrentPage] = useState<Page>('home')
+// Relax typing so TS doesn’t complain if some pages don’t declare props explicitly
+type AnyComponent = React.ComponentType<any>
 
-  const renderPage = () => {
-    switch (currentPage) {
-      case 'home':
-        return <HomePage onNavigate={setCurrentPage} />
-      case 'patients':
-        return <PatientsPage onNavigate={setCurrentPage} />
-      case 'clinics-labs':
-        return <ClinicsLabsPage onNavigate={setCurrentPage} />
-      case 'clinical-evidence':
-        return <ClinicalEvidencePage onNavigate={setCurrentPage} />
-      case 'investors':
-        return <InvestorsPage onNavigate={setCurrentPage} />
-      case 'contact':
-        return <ContactPage onNavigate={setCurrentPage} />
-      default:
-        return <HomePage onNavigate={setCurrentPage} />
-    }
-  }
-
-  return (
-    <div className="App">
-      <Header currentPage={currentPage} onNavigate={setCurrentPage} />
-      <main>
-        {renderPage()}
-      </main>
-      <Footer onNavigate={setCurrentPage} />
-    </div>
-  )
+const PAGES: Record<Page, AnyComponent> = {
+  'home': HomePage,
+  'patients': PatientsPage,
+  'clinics-labs': ClinicsAndLabsPage,
+  'clinical-evidence': ClinicalEvidencePage,
+  'investors': InvestorsPage,
+  'contact': ContactPage,
 }
 
-export default App
+export default function App() {
+  const [page, setPage] = useState<Page>('home')
+  const Current = PAGES[page]
 
+  return (
+    <>
+      <Header current={page} onNavigate={setPage} />
+      <main>
+        <Current onNavigate={setPage} />
+      </main>
+      <Footer />
+    </>
+  )
+}
