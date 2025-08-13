@@ -52,7 +52,7 @@ const Header: React.FC<Props> = ({ current, onNavigate }) => {
           onClick={(e) => { if (onNavigate) { e.preventDefault(); onNavigate('home') } }}
           style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none' }}
         >
-          <img src="/logos/COLONAiVE-light.png" alt="COLONAiQ® Asia" style={{ height: 28, width: 'auto' }} />
+          <img src="/logos/SaversMed.png" alt="COLONAiQ® Asia" style={{ height: 28, width: 'auto' }} />
           <span style={{ fontWeight: 700, color: 'var(--text-strong)' }}>ColonAiQ® Asia</span>
         </a>
 
