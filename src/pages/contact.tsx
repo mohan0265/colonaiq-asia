@@ -112,52 +112,6 @@ const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* Contact Information Section */}
-      <section className="section" style={{ background: 'var(--bg-light)' }}>
-        <div className="container">
-          <h2 className="section-title">Get in Touch</h2>
-          <p className="section-subtitle">
-            Multiple ways to reach our team for different types of enquiries
-          </p>
-          
-          <div style={{ textAlign: 'center', maxWidth: '600px', margin: '0 auto' }}>
-            <div className="card">
-              <h3 style={{ 
-                fontSize: '1.8rem', 
-                fontWeight: '600', 
-                marginBottom: '1.5rem',
-                color: 'var(--primary-blue)'
-              }}>
-                Official Company Details
-              </h3>
-              <div style={{ 
-                fontSize: '1.2rem',
-                lineHeight: '2',
-                marginBottom: '2rem'
-              }}>
-                <p style={{ marginBottom: '0.5rem' }}>
-                  <strong>Saver's Med Pte Ltd</strong>
-                </p>
-                <p style={{ marginBottom: '0.5rem' }}>
-                  10 Jalan Rengas, Singapore 808530
-                </p>
-                <p style={{ marginBottom: '1.5rem' }}>
-                  📧 admin@saversmed.com
-                </p>
-              </div>
-              <p style={{ 
-                color: 'var(--text-light)',
-                fontSize: '1rem',
-                lineHeight: '1.6',
-                fontStyle: 'italic'
-              }}>
-                For media/clinical enquiries, please email admin@saversmed.com
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Contact Form Section */}
       <section className="section">
         <div className="container">
