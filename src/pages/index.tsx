@@ -23,7 +23,7 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             Advanced Blood-Based Screening for Colorectal Cancer
           </h1>
           <p style={{ fontSize: '1rem', opacity: 0.9, marginBottom: '1.25rem' }}>
-            <strong>CE Marked, China NMPA registered and Singapore HSA-cleared ColonAiQ®</strong>
+            <strong>Singapore HSA-cleared, CE Marked, China NMPA registered ColonAiQ®</strong>
           </p>
           <p
             style={{
@@ -36,7 +36,7 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             }}
           >
             Patient-friendly screening that helps more people get screened on time, supports earlier detection,
-            and contributes to national health goals.
+            timely colonoscopy referrals, and contributes to national health goals.
           </p>
           <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <button className="btn btn-primary" onClick={() => onNavigate('patients')}>For Patients</button>
