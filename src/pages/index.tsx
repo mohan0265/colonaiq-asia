@@ -99,41 +99,30 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* CRC Insights (sample placeholder) */}
+      {/* About ColonAiQ Section */}
       <section className="section" style={{ background: 'var(--bg-light)' }}>
         <div className="container">
-          <h2 className="section-title">CRC Insights</h2>
+          <h2 className="section-title">About ColonAiQ®</h2>
           <p className="section-subtitle">
-            Sample updates shown here. A live evidence & news feed will be added shortly.
+            Three key benefits that make ColonAiQ® a valuable screening option
           </p>
 
           <div className="grid grid-3">
-            {[
-              {
-                title: 'Screening Uptake Strategies',
-                summary:
-                  'International programs highlight the importance of convenient options to reach hesitant populations.',
-                source: 'Public Health Sources'
-              },
-              {
-                title: 'Early-Onset CRC Awareness',
-                summary:
-                  'Global attention on earlier symptom recognition and timely referrals among younger at-risk adults.',
-                source: 'Clinical Commentaries'
-              },
-              {
-                title: 'Pathway to Early Detection',
-                summary:
-                  'Combining non-invasive screening with organised colonoscopy access can improve outcomes.',
-                source: 'Population Screening Literature'
-              }
-            ].map((item, i) => (
-              <div key={i} className="card">
-                <h3>{item.title}</h3>
-                <p>{item.summary}</p>
-                <div className="meta">Source: {item.source}</div>
-              </div>
-            ))}
+            <div className="card">
+              <div className="card-emoji">🩸</div>
+              <h3>Convenient</h3>
+              <p>Simple blood draw with no bowel preparation required, making screening more acceptable and accessible for patients.</p>
+            </div>
+            <div className="card">
+              <div className="card-emoji">🔍</div>
+              <h3>Supports Earlier Detection</h3>
+              <p>Designed to identify individuals at higher risk who would benefit from colonoscopy referral and diagnostic follow-up.</p>
+            </div>
+            <div className="card">
+              <div className="card-emoji">🎯</div>
+              <h3>Aligns with Screening Goals</h3>
+              <p>Complements national colorectal cancer prevention programs by reducing barriers to regular screening participation.</p>
+            </div>
           </div>
         </div>
       </section>

@@ -31,7 +31,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </div>
             <p style={{ marginBottom: '1rem', lineHeight: '1.6' }}>
               Advanced blood test for colorectal cancer screening. 
-              HSA-Cleared, CE-Marked, NMPA Registered.
+              CE Marked, China NMPA registered and Singapore HSA-cleared ColonAiQ®
             </p>
             <p style={{ fontSize: '0.9rem', opacity: '0.8' }}>
               Early detection saves lives.
@@ -79,13 +79,13 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.9rem' }}>
               <p style={{ opacity: '0.8' }}>
-                📧 info@colonaiq-asia.com
+                <strong>Saver's Med Pte Ltd</strong>
               </p>
               <p style={{ opacity: '0.8' }}>
-                📱 WhatsApp: +65 XXXX XXXX
+                10 Jalan Rengas, Singapore 808530
               </p>
               <p style={{ opacity: '0.8' }}>
-                🏢 Singapore
+                📧 admin@saversmed.com
               </p>
             </div>
           </div>
@@ -96,9 +96,9 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               Regulatory Approvals
             </h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.9rem' }}>
-              <p style={{ opacity: '0.8' }}>✓ HSA-Cleared (Singapore)</p>
-              <p style={{ opacity: '0.8' }}>✓ CE-Marked (Europe)</p>
-              <p style={{ opacity: '0.8' }}>✓ NMPA Registered (China)</p>
+              <p style={{ opacity: '0.8' }}>✓ Singapore HSA-cleared</p>
+              <p style={{ opacity: '0.8' }}>✓ CE Marked</p>
+              <p style={{ opacity: '0.8' }}>✓ China NMPA registered</p>
             </div>
           </div>
         </div>

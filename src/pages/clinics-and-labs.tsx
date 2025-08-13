@@ -54,7 +54,7 @@ const ClinicsLabsPage: React.FC<ClinicsLabsPageProps> = ({ onNavigate }) => {
             margin: '0 auto',
             opacity: '0.9'
           }}>
-            Partner with ColonAiQ® to improve patient outcomes and support national screening goals
+            We are onboarding certified ColonAiQ® provider partners. The official partner directory will appear here. For listing requests or verification, email admin@saversmed.com.
           </p>
         </div>
       </section>

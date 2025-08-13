@@ -120,87 +120,40 @@ const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
             Multiple ways to reach our team for different types of enquiries
           </p>
           
-          <div className="grid grid-3">
-            {[
-              {
-                type: 'General Enquiries',
-                icon: '📧',
-                email: 'info@colonaiq-asia.com',
-                phone: '+65 XXXX XXXX',
-                hours: 'Mon-Fri: 9AM-6PM SGT',
-                description: 'General questions, patient support, and information requests'
-              },
-              {
-                type: 'Partnership & Business',
-                icon: '🤝',
-                email: 'partners@colonaiq-asia.com',
-                phone: '+65 XXXX XXXX',
-                hours: 'Mon-Fri: 9AM-6PM SGT',
-                description: 'Clinic partnerships, laboratory integration, and business development'
-              },
-              {
-                type: 'Investor Relations',
-                icon: '💼',
-                email: 'investors@colonaiq-asia.com',
-                phone: '+65 XXXX XXXX',
-                hours: 'By Appointment',
-                description: 'Investment opportunities, financial information, and strategic partnerships'
-              }
-            ].map((contact, index) => (
-              <div key={index} className="card">
-                <div style={{ 
-                  fontSize: '3rem', 
-                  textAlign: 'center',
-                  marginBottom: '1rem'
-                }}>
-                  {contact.icon}
-                </div>
-                <h3 style={{ 
-                  fontSize: '1.3rem', 
-                  fontWeight: '600', 
-                  marginBottom: '1rem',
-                  color: 'var(--primary-blue)',
-                  textAlign: 'center'
-                }}>
-                  {contact.type}
-                </h3>
-                <div style={{ 
-                  marginBottom: '1rem',
-                  textAlign: 'center'
-                }}>
-                  <p style={{ 
-                    color: 'var(--text-light)', 
-                    marginBottom: '0.5rem',
-                    fontSize: '0.95rem'
-                  }}>
-                    📧 {contact.email}
-                  </p>
-                  <p style={{ 
-                    color: 'var(--text-light)', 
-                    marginBottom: '0.5rem',
-                    fontSize: '0.95rem'
-                  }}>
-                    📞 {contact.phone}
-                  </p>
-                  <p style={{ 
-                    color: 'var(--text-light)', 
-                    marginBottom: '1rem',
-                    fontSize: '0.9rem',
-                    fontWeight: '500'
-                  }}>
-                    🕒 {contact.hours}
-                  </p>
-                </div>
-                <p style={{ 
-                  color: 'var(--text-light)', 
-                  lineHeight: '1.5',
-                  fontSize: '0.9rem',
-                  textAlign: 'center'
-                }}>
-                  {contact.description}
+          <div style={{ textAlign: 'center', maxWidth: '600px', margin: '0 auto' }}>
+            <div className="card">
+              <h3 style={{ 
+                fontSize: '1.8rem', 
+                fontWeight: '600', 
+                marginBottom: '1.5rem',
+                color: 'var(--primary-blue)'
+              }}>
+                Official Company Details
+              </h3>
+              <div style={{ 
+                fontSize: '1.2rem',
+                lineHeight: '2',
+                marginBottom: '2rem'
+              }}>
+                <p style={{ marginBottom: '0.5rem' }}>
+                  <strong>Saver's Med Pte Ltd</strong>
+                </p>
+                <p style={{ marginBottom: '0.5rem' }}>
+                  10 Jalan Rengas, Singapore 808530
+                </p>
+                <p style={{ marginBottom: '1.5rem' }}>
+                  📧 admin@saversmed.com
                 </p>
               </div>
-            ))}
+              <p style={{ 
+                color: 'var(--text-light)',
+                fontSize: '1rem',
+                lineHeight: '1.6',
+                fontStyle: 'italic'
+              }}>
+                For media/clinical enquiries, please email admin@saversmed.com
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -514,15 +467,18 @@ const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                 </div>
 
                 <button 
-                  type="submit"
+                  type="button"
                   className="btn btn-primary"
+                  disabled
                   style={{ 
                     width: '100%', 
                     fontSize: '1.1rem',
-                    padding: '1rem'
+                    padding: '1rem',
+                    opacity: '0.6',
+                    cursor: 'not-allowed'
                   }}
                 >
-                  Send {formConfigs[activeForm].title}
+                  Form Submission - Coming Soon
                 </button>
               </form>
             </div>
@@ -530,90 +486,6 @@ const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* Office Location Section */}
-      <section className="section" style={{ background: 'var(--bg-light)' }}>
-        <div className="container">
-          <h2 className="section-title">Our Location</h2>
-          <p className="section-subtitle">
-            Visit our Singapore headquarters or connect with us virtually
-          </p>
-          
-          <div style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
-            gap: '3rem',
-            alignItems: 'center'
-          }}>
-            <div>
-              <h3 style={{ 
-                fontSize: '1.5rem',
-                fontWeight: '600',
-                marginBottom: '1rem',
-                color: 'var(--primary-blue)'
-              }}>
-                ColonAiQ® Asia Headquarters
-              </h3>
-              <div style={{ 
-                fontSize: '1.1rem',
-                lineHeight: '1.8',
-                color: 'var(--text-light)'
-              }}>
-                <p style={{ marginBottom: '0.5rem' }}>
-                  📍 <strong>Address:</strong><br />
-                  123 Medical Hub Drive<br />
-                  Singapore Science Park<br />
-                  Singapore 117543
-                </p>
-                <p style={{ marginBottom: '0.5rem' }}>
-                  🕒 <strong>Office Hours:</strong><br />
-                  Monday - Friday: 9:00 AM - 6:00 PM<br />
-                  Saturday: 9:00 AM - 1:00 PM<br />
-                  Sunday: Closed
-                </p>
-                <p>
-                  🚇 <strong>Nearest MRT:</strong><br />
-                  Buona Vista Station (Circle & East West Lines)
-                </p>
-              </div>
-            </div>
-            
-            <div style={{ 
-              background: 'var(--white)',
-              borderRadius: '1rem',
-              padding: '2rem',
-              textAlign: 'center',
-              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
-            }}>
-              <div style={{ 
-                fontSize: '4rem',
-                marginBottom: '1rem'
-              }}>
-                🗺️
-              </div>
-              <h4 style={{ 
-                fontSize: '1.3rem',
-                fontWeight: '600',
-                marginBottom: '1rem',
-                color: 'var(--primary-blue)'
-              }}>
-                Interactive Map
-              </h4>
-              <p style={{ 
-                color: 'var(--text-light)',
-                marginBottom: '1.5rem'
-              }}>
-                Get directions to our office and find nearby parking options
-              </p>
-              <button 
-                className="btn btn-outline"
-                style={{ width: '100%' }}
-              >
-                Open in Google Maps
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* FAQ Section */}
       <section className="section">
