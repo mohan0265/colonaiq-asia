@@ -137,37 +137,98 @@ const ClinicalEvidencePage: React.FC<ClinicalEvidencePageProps> = ({ onNavigate 
   return (
     <div>
       {/* Hero */}
-      <section
-        style={{
-          background: 'linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%)',
-          color: 'var(--white)',
-          padding: '6rem 0',
-        }}
+<section className="hero-evidence" style={{
+  background: 'linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%)',
+  color: 'var(--white)',
+  padding: '6rem 0 4rem'
+}}>
+  <style>{`
+    .hero-evidence .regline {
+      font-size: 0.95rem; 
+      opacity: 0.9;
+      margin-bottom: 0.6rem;
+    }
+    .hero-evidence .title {
+      font-size: 2.5rem; 
+      font-weight: 800; 
+      margin: 0.25rem 0 0.5rem;
+    }
+    .hero-evidence .sub {
+      max-width: 860px; 
+      margin: 0 auto; 
+      opacity: 0.95;
+      line-height: 1.6;
+    }
+    .hero-evidence .cta {
+      display: flex; 
+      gap: 0.75rem; 
+      justify-content: center; 
+      flex-wrap: wrap; 
+      margin-top: 1.4rem;
+    }
+    .hero-evidence .btn {
+      display: inline-flex; 
+      align-items: center; 
+      gap: .5rem;
+      padding: 0.75rem 1.15rem; 
+      border-radius: 999px; 
+      border: 1px solid transparent;
+      font-weight: 600; 
+      text-decoration: none; 
+      cursor: pointer;
+      transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+    }
+    .hero-evidence .btn:focus { outline: 2px solid rgba(255,255,255,.9); outline-offset: 2px; }
+    .hero-evidence .btn:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(0,0,0,.15); }
+    .hero-evidence .btn-primary {
+      background: var(--white); 
+      color: var(--primary-blue);
+      border-color: rgba(255,255,255,.8);
+    }
+    .hero-evidence .btn-secondary {
+      background: transparent; 
+      color: var(--white); 
+      border-color: rgba(255,255,255,.75);
+    }
+    @media (max-width: 640px) {
+      .hero-evidence { padding: 4.5rem 0 3rem; }
+      .hero-evidence .title { font-size: 2rem; }
+      .hero-evidence .btn { width: 100%; justify-content: center; }
+    }
+  `}</style>
+
+  <div className="container" style={{ textAlign: 'center' }}>
+    <div className="regline">
+      CE Marked, China NMPA registered and Singapore HSA-cleared ColonAiQ®
+    </div>
+    <h1 className="title">Clinical Evidence</h1>
+    <p className="sub">
+      Blood-based, multi-gene methylation assay for colorectal cancer screening, ctDNA-based MRD detection
+      and recurrence risk prediction. Data summarised below from peer-reviewed studies and real-world evidence.
+    </p>
+
+    <div className="cta">
+      <a
+        className="btn btn-primary"
+        href="/pdfs/ColonAiQ_Clinical_Evidence.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Download ColonAiQ Clinical Evidence PDF"
       >
-        <div className="container" style={{ textAlign: 'center' }}>
-          <div style={{ display: 'inline-flex', gap: '0.5rem', alignItems: 'center', marginBottom: '0.75rem' }}>
-            <span style={{ fontSize: '0.9rem', opacity: 0.9 }}>
-              CE Marked, China NMPA registered and Singapore HSA-cleared ColonAiQ®
-            </span>
-          </div>
-          <h1 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '0.75rem' }}>Clinical Evidence</h1>
-          <p style={{ maxWidth: 820, margin: '0 auto', opacity: 0.95 }}>
-            Blood-based, multi-gene methylation assay for colorectal cancer screening, ctDNA-based MRD detection and
-            recurrence risk prediction. Data summarised below from peer-reviewed studies and real-world evidence.
-          </p>
+        ⬇ Download Evidence Pack (PDF)
+      </a>
 
-          <div style={{ marginTop: '1.25rem' }}>
-            <AnchorList />
-          </div>
+      <button
+        className="btn btn-secondary"
+        onClick={() => onNavigate('home')}
+        aria-label="Back to Home"
+      >
+        ← Back to Home
+      </button>
+    </div>
+  </div>
+</section>
 
-          <div style={{ marginTop: '1.5rem', display: 'flex', gap: '0.75rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <button className="button button-light" onClick={() => onNavigate('home')} style={{ borderRadius: '999px' }}>
-              ← Back to Home
-            </button>
-            <DownloadButtons />
-          </div>
-        </div>
-      </section>
 
         {/* Executive Summary */}
       <section id="exec" className="section">
