@@ -274,6 +274,36 @@ const PatientsPage: React.FC<PatientsPageProps> = ({ onNavigate }) => {
         </div>
       </section>
 
+      {/* COLONAiVE callout */}
+<section className="section" style={{ background: 'var(--bg-light)' }}>
+  <div className="container" style={{ display:'grid', gap:'1rem', gridTemplateColumns:'repeat(auto-fit,minmax(260px,1fr))', alignItems:'center' }}>
+    <div>
+      <h2 className="section-title" style={{ marginTop: 0 }}>Learn more about colorectal cancer</h2>
+      <p style={{ color:'var(--text-light)' }}>
+        Project COLONAiVE™ is a national movement focused on education, screening and timely triage to outsmart colorectal cancer.
+        Visit the site to understand the bigger picture, then speak to your clinician about screening options that suit you.
+      </p>
+      <a
+        className="button button-light"
+        href="https://www.colonaive.ai"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Open Project COLONAiVE website in a new tab"
+      >
+        Explore Project COLONAiVE →
+      </a>
+    </div>
+    <img
+      src="/images/home/impact-ribbon.webp"
+      alt="Blue ribbon for colorectal cancer awareness"
+      loading="lazy"
+      style={{ width:'100%', maxWidth:420, height:'auto', borderRadius:14, boxShadow:'0 10px 30px rgba(0,0,0,.08)', justifySelf:'center' }}
+      onError={(e)=>{ (e.currentTarget as HTMLImageElement).style.display='none' }}
+    />
+  </div>
+</section>
+
+
       {/* SEO: FAQ Schema (customise as needed) */}
       <script
         type="application/ld+json"
