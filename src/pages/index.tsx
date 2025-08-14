@@ -26,6 +26,7 @@ const Stat: React.FC<{ label: string; value: string; note?: string }> = ({
       borderRadius: 12,
       padding: '0.9rem 1rem',
       minWidth: 180,
+      color: 'var(--text, #0f172a)',   // <-- add this lineS
     }}
   >
     <div style={{ fontSize: '1.35rem', fontWeight: 800 }}>{value}</div>
@@ -65,7 +66,7 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         style={{
           // Background image + accessible overlay to keep text readable
           backgroundImage:
-            'linear-gradient(135deg, rgba(13,74,120,.94) 0%, rgba(16,103,160,.92) 100%), url(/images/home/hero-blood.webp)',
+            'linear-gradient(135deg, rgba(13,74,120,.72) 0%, rgba(16,103,160,.66) 100%), url(/images/home/hero-blood.webp)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           color: 'var(--white)',
