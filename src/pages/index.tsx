@@ -13,37 +13,31 @@ interface HomePageProps {
   onNavigate: (page: Page) => void
 }
 
-// Brand-tinted stat pill (teal)
-const Stat: React.FC<{ label: string; value: string; note?: string }> = ({
+/** High-contrast stat pill for the hero */
+const HeroStat: React.FC<{ label: string; value: string; note?: string }> = ({
   label,
   value,
   note,
-}) => {
-  // COLONAiVE-ish teal (close to #14b8a6). Tweak ALPHA values if you want more/less tint.
-  const TEAL = '20,184,166' // rgb(20,184,166)
-  return (
-    <div
-      style={{
-        background: `rgba(${TEAL}, .10)`,   // <- tint strength (0.08 – 0.12 is a nice range)
-        border: `1px solid rgba(${TEAL}, .35)`,
-        boxShadow: `0 8px 20px rgba(${TEAL}, .08)`,
-        borderRadius: 12,
-        padding: '0.9rem 1rem',
-        minWidth: 180,
-        color: 'var(--text, #0f172a)',
-      }}
-    >
-      <div style={{ fontSize: '1.35rem', fontWeight: 800, color: '#0f766e' /* deeper teal for the number */ }}>
-        {value}
-      </div>
-      <div style={{ fontSize: '0.95rem' }}>{label}</div>
-      {note && (
-        <div style={{ fontSize: '.8rem', color: 'var(--text-light)' }}>{note}</div>
-      )}
+}) => (
+  <div
+    style={{
+      background: 'rgba(255,255,255,0.98)',
+      border: '1px solid rgba(0,0,0,.06)',
+      borderRadius: 12,
+      padding: '0.9rem 1rem',
+      minWidth: 180,
+      boxShadow: '0 10px 24px rgba(0,0,0,.08)',
+      color: '#0f172a',
+      textAlign: 'center',
+    }}
+  >
+    <div style={{ fontSize: '1.35rem', fontWeight: 800, color: '#0b4a78' }}>
+      {value}
     </div>
-  )
-}
-
+    <div style={{ fontSize: '0.95rem' }}>{label}</div>
+    {note && <div style={{ fontSize: '.8rem', color: '#64748b' }}>{note}</div>}
+  </div>
+)
 
 /** Reusable white card tile */
 const Tile: React.FC<{ title: string; children: React.ReactNode }> = ({
@@ -72,9 +66,9 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       <section
         className="hero-home"
         style={{
-          // Background image + accessible overlay to keep text readable
+          // Slightly stronger overlay for maximum readability
           backgroundImage:
-            'linear-gradient(135deg, rgba(13,74,120,.72) 0%, rgba(16,103,160,.66) 100%), url(/images/home/hero-blood.webp)',
+            'linear-gradient(135deg, rgba(13,74,120,.78) 0%, rgba(16,103,160,.72) 100%), url(/images/home/hero-blood.webp)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           color: 'var(--white)',
@@ -82,15 +76,30 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         }}
       >
         <style>{`
-          .hero-home .headline { font-size: 2.35rem; font-weight: 800; margin: 0 0 .4rem; }
-          .hero-home .sub { max-width: 900px; margin: 0 auto; line-height: 1.6; opacity: .95; }
-          .hero-home .regline { font-size: .95rem; opacity: .9; margin-bottom: .6rem; }
+          .hero-home .headline {
+            font-size: 2.35rem; font-weight: 800; margin: 0 0 .4rem;
+            text-shadow: 0 2px 14px rgba(0,0,0,.35);
+          }
+          .hero-home .sub {
+            max-width: 900px; margin: 0 auto; line-height: 1.6; opacity: .98;
+            text-shadow: 0 1px 8px rgba(0,0,0,.25);
+          }
+          .hero-home .regline {
+            font-size: .95rem; opacity: .95; margin-bottom: .6rem;
+            text-shadow: 0 1px 6px rgba(0,0,0,.25);
+          }
           .hero-home .cta { display: flex; gap: .6rem; flex-wrap: wrap; justify-content: center; margin-top: 1.2rem; }
           .hero-home .btn { border-radius: 999px; padding: .7rem 1.1rem; font-weight: 600; cursor: pointer; }
           .hero-home .btn-primary { background: var(--white); color: var(--primary-blue); border: 1px solid rgba(255,255,255,.8); }
-          .hero-home .btn-secondary { background: rgba(255,255,255,.1); color: var(--white); border: 1px solid rgba(255,255,255,.35); }
+          .hero-home .btn-secondary {
+            background: rgba(255,255,255,.14); color: var(--white); border: 1px solid rgba(255,255,255,.35);
+            backdrop-filter: saturate(140%) blur(2px);
+          }
           .hero-home .stats { display:flex; gap:.6rem; flex-wrap:wrap; justify-content:center; margin-top: 1rem; }
-          .hero-home .footnote { font-size: .8rem; opacity: .9; margin-top: .4rem; }
+          .hero-home .footnote {
+            font-size: .8rem; opacity: .95; margin-top: .4rem;
+            text-shadow: 0 1px 6px rgba(0,0,0,.25);
+          }
           @media (max-width:640px){
             .hero-home{ padding:4.5rem 0 2.5rem }
             .hero-home .headline{ font-size:1.9rem }
@@ -131,15 +140,15 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             </button>
           </div>
 
-          {/* Key figures strip */}
+          {/* High-contrast stats */}
           <div className="stats">
-            <Stat value="86.1%" label="Sensitivity (all CRC)" />
-            <Stat value="78.3%" label="Stage I sensitivity" />
-            <Stat value="91.9%" label="Specificity (controls)" />
+            <HeroStat value="86.1%" label="Sensitivity (all CRC)" />
+            <HeroStat value="78.3%" label="Stage I sensitivity" />
+            <HeroStat value="91.9%" label="Specificity (controls)" />
           </div>
 
           <div className="footnote">
-            Data from peer-reviewed studies.{' '}
+            Data from peer-reviewed studies.{` `}
             <a
               href="#"
               onClick={(e) => {
@@ -202,7 +211,7 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         <div className="container">
           <h2 className="section-title">How ColonAiQ® complements current options</h2>
 
-          {/* Visual */}
+        {/* Visual */}
           <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem' }}>
             <img
               src="/images/home/compare-blood-tube.webp"
@@ -319,7 +328,6 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 boxShadow: '0 10px 30px rgba(0,0,0,.08)',
               }}
               onError={(e) => {
-                // If optional image not present, hide gracefully
                 (e.currentTarget as HTMLImageElement).style.display = 'none'
               }}
             />

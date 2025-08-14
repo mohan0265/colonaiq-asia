@@ -1,3 +1,4 @@
+// src/pages/patients.tsx
 import React, { useMemo } from 'react'
 
 type Page =
@@ -29,29 +30,26 @@ const sgStats: Partial<{
   // early5ySurvivalPct: 90,
 }
 
-// Small brand-tinted stat pill
-const Stat = ({ label, value }: { label: string; value: string }) => {
-  const TEAL = '20,184,166' // close to COLONAiVE teal
-  return (
-    <div
-      style={{
-        background: `rgba(${TEAL}, .10)`,
-        border: `1px solid rgba(${TEAL}, .35)`,
-        boxShadow: `0 8px 20px rgba(${TEAL}, .08)`,
-        borderRadius: 12,
-        padding: '0.9rem 1rem',
-        minWidth: 210,
-        color: 'var(--text, #0f172a)',
-        textAlign: 'center',
-      }}
-    >
-      <div style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0f766e' }}>
-        {value}
-      </div>
-      <div style={{ fontSize: '.95rem' }}>{label}</div>
+/** High-contrast stat pill for hero (replaces teal-tinted version) */
+const Stat = ({ label, value }: { label: string; value: string }) => (
+  <div
+    style={{
+      background: 'rgba(255,255,255,0.98)',
+      border: '1px solid rgba(0,0,0,.06)',
+      boxShadow: '0 10px 24px rgba(0,0,0,.08)',
+      borderRadius: 12,
+      padding: '0.9rem 1rem',
+      minWidth: 210,
+      color: '#0f172a',
+      textAlign: 'center',
+    }}
+  >
+    <div style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0b4a78' }}>
+      {value}
     </div>
-  )
-}
+    <div style={{ fontSize: '.95rem' }}>{label}</div>
+  </div>
+)
 
 const Tile = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <div
@@ -63,12 +61,16 @@ const Tile = ({ title, children }: { title: string; children: React.ReactNode })
     }}
   >
     <h3 style={{ margin: 0, fontSize: '1.05rem' }}>{title}</h3>
-    <div style={{ marginTop: '.5rem', lineHeight: 1.7, color: 'var(--text-light)' }}>{children}</div>
+    <div style={{ marginTop: '.5rem', lineHeight: 1.7, color: 'var(--text-light)' }}>
+      {children}
+    </div>
   </div>
 )
 
 const PatientsPage: React.FC<PatientsPageProps> = ({ onNavigate }) => {
-  const heroOverlay = 'linear-gradient(135deg, rgba(13,74,120,.72) 0%, rgba(16,103,160,.66) 100%)'
+  // Slightly stronger overlay for better readability on all screens
+  const heroOverlay =
+    'linear-gradient(135deg, rgba(13,74,120,.76) 0%, rgba(16,103,160,.70) 100%)'
 
   // Build “stats” with safe fallbacks if values aren’t populated yet
   const stats = useMemo(() => {
@@ -111,15 +113,30 @@ const PatientsPage: React.FC<PatientsPageProps> = ({ onNavigate }) => {
         }}
       >
         <style>{`
-          .p-hero .headline { font-size: 2.2rem; font-weight: 800; margin: 0 0 .4rem; }
-          .p-hero .sub { max-width: 900px; margin: 0 auto; line-height: 1.6; opacity: .95; }
-          .p-hero .regline { font-size: .95rem; opacity: .9; margin-bottom: .6rem; }
+          .p-hero .headline {
+            font-size: 2.2rem; font-weight: 800; margin: 0 0 .4rem;
+            text-shadow: 0 2px 14px rgba(0,0,0,.35);
+          }
+          .p-hero .sub {
+            max-width: 900px; margin: 0 auto; line-height: 1.6; opacity: .98;
+            text-shadow: 0 1px 8px rgba(0,0,0,.25);
+          }
+          .p-hero .regline {
+            font-size: .95rem; opacity: .95; margin-bottom: .6rem;
+            text-shadow: 0 1px 6px rgba(0,0,0,.25);
+          }
           .p-hero .cta { display: flex; gap: .6rem; flex-wrap: wrap; justify-content: center; margin-top: 1.2rem; }
           .p-hero .btn { border-radius: 999px; padding: .7rem 1.1rem; font-weight: 600; cursor: pointer; }
           .p-hero .btn-primary { background: var(--white); color: var(--primary-blue); border: 1px solid rgba(255,255,255,.8); }
-          .p-hero .btn-secondary { background: rgba(255,255,255,.1); color: var(--white); border: 1px solid rgba(255,255,255,.35); }
+          .p-hero .btn-secondary {
+            background: rgba(255,255,255,.14); color: var(--white); border: 1px solid rgba(255,255,255,.35);
+            backdrop-filter: saturate(140%) blur(2px);
+          }
           .p-hero .stats { display:flex; gap:.6rem; flex-wrap:wrap; justify-content:center; margin-top: 1rem; }
-          .p-hero .footnote { font-size: .8rem; opacity: .9; margin-top: .6rem; }
+          .p-hero .footnote {
+            font-size: .8rem; opacity: .95; margin-top: .6rem;
+            text-shadow: 0 1px 6px rgba(0,0,0,.25);
+          }
           @media (max-width:640px){
             .p-hero .headline{ font-size:1.85rem }
             .p-hero .btn{ width:100%; }
@@ -215,7 +232,7 @@ const PatientsPage: React.FC<PatientsPageProps> = ({ onNavigate }) => {
       <section className="section" style={{ background: 'var(--bg-light)' }}>
         <div className="container">
           <h2 className="section-title">Who should consider screening?</h2>
-          <div className="grid grid-2" style={{ gap: '1rem' }}>
+        <div className="grid grid-2" style={{ gap: '1rem' }}>
             <Tile title="General guidance">
               Adults in the recommended screening age range (often starting from 45–50) should discuss options with their clinician.
               Screening intervals and tests vary by guideline.
@@ -275,34 +292,40 @@ const PatientsPage: React.FC<PatientsPageProps> = ({ onNavigate }) => {
       </section>
 
       {/* COLONAiVE callout */}
-<section className="section" style={{ background: 'var(--bg-light)' }}>
-  <div className="container" style={{ display:'grid', gap:'1rem', gridTemplateColumns:'repeat(auto-fit,minmax(260px,1fr))', alignItems:'center' }}>
-    <div>
-      <h2 className="section-title" style={{ marginTop: 0 }}>Learn more about colorectal cancer</h2>
-      <p style={{ color:'var(--text-light)' }}>
-        Project COLONAiVE™ is a national movement focused on education, screening and timely triage to outsmart colorectal cancer.
-        Visit the site to understand the bigger picture, then speak to your clinician about screening options that suit you.
-      </p>
-      <a
-        className="button button-light"
-        href="https://www.colonaive.ai"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Open Project COLONAiVE website in a new tab"
-      >
-        Explore Project COLONAiVE →
-      </a>
-    </div>
-    <img
-      src="/images/home/impact-ribbon.webp"
-      alt="Blue ribbon for colorectal cancer awareness"
-      loading="lazy"
-      style={{ width:'100%', maxWidth:420, height:'auto', borderRadius:14, boxShadow:'0 10px 30px rgba(0,0,0,.08)', justifySelf:'center' }}
-      onError={(e)=>{ (e.currentTarget as HTMLImageElement).style.display='none' }}
-    />
-  </div>
-</section>
-
+      <section className="section" style={{ background: 'var(--bg-light)' }}>
+        <div
+          className="container"
+          style={{
+            display:'grid', gap:'1rem',
+            gridTemplateColumns:'repeat(auto-fit,minmax(260px,1fr))',
+            alignItems:'center'
+          }}
+        >
+          <div>
+            <h2 className="section-title" style={{ marginTop: 0 }}>Learn more about colorectal cancer</h2>
+            <p style={{ color:'var(--text-light)' }}>
+              Project COLONAiVE™ is a national movement focused on education, screening and timely triage to outsmart colorectal cancer.
+              Visit the site to understand the bigger picture, then speak to your clinician about screening options that suit you.
+            </p>
+            <a
+              className="button button-light"
+              href="https://www.colonaive.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open Project COLONAiVE website in a new tab"
+            >
+              Explore Project COLONAiVE →
+            </a>
+          </div>
+          <img
+            src="/images/home/impact-ribbon.webp"
+            alt="Blue ribbon for colorectal cancer awareness"
+            loading="lazy"
+            style={{ width:'100%', maxWidth:420, height:'auto', borderRadius:14, boxShadow:'0 10px 30px rgba(0,0,0,.08)', justifySelf:'center' }}
+            onError={(e)=>{ (e.currentTarget as HTMLImageElement).style.display='none' }}
+          />
+        </div>
+      </section>
 
       {/* SEO: FAQ Schema (customise as needed) */}
       <script
