@@ -13,29 +13,37 @@ interface HomePageProps {
   onNavigate: (page: Page) => void
 }
 
-/** Small stat pill used in hero */
+// Brand-tinted stat pill (teal)
 const Stat: React.FC<{ label: string; value: string; note?: string }> = ({
   label,
   value,
   note,
-}) => (
-  <div
-    style={{
-      background: 'var(--white)',
-      border: '1px solid #e5e7eb',
-      borderRadius: 12,
-      padding: '0.9rem 1rem',
-      minWidth: 180,
-      color: 'var(--text, #0f172a)',   // <-- add this lineS
-    }}
-  >
-    <div style={{ fontSize: '1.35rem', fontWeight: 800 }}>{value}</div>
-    <div style={{ fontSize: '0.95rem' }}>{label}</div>
-    {note && (
-      <div style={{ fontSize: '.8rem', color: 'var(--text-light)' }}>{note}</div>
-    )}
-  </div>
-)
+}) => {
+  // COLONAiVE-ish teal (close to #14b8a6). Tweak ALPHA values if you want more/less tint.
+  const TEAL = '20,184,166' // rgb(20,184,166)
+  return (
+    <div
+      style={{
+        background: `rgba(${TEAL}, .10)`,   // <- tint strength (0.08 – 0.12 is a nice range)
+        border: `1px solid rgba(${TEAL}, .35)`,
+        boxShadow: `0 8px 20px rgba(${TEAL}, .08)`,
+        borderRadius: 12,
+        padding: '0.9rem 1rem',
+        minWidth: 180,
+        color: 'var(--text, #0f172a)',
+      }}
+    >
+      <div style={{ fontSize: '1.35rem', fontWeight: 800, color: '#0f766e' /* deeper teal for the number */ }}>
+        {value}
+      </div>
+      <div style={{ fontSize: '0.95rem' }}>{label}</div>
+      {note && (
+        <div style={{ fontSize: '.8rem', color: 'var(--text-light)' }}>{note}</div>
+      )}
+    </div>
+  )
+}
+
 
 /** Reusable white card tile */
 const Tile: React.FC<{ title: string; children: React.ReactNode }> = ({
