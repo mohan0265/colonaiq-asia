@@ -100,6 +100,14 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             font-size: .8rem; opacity: .95; margin-top: .4rem;
             text-shadow: 0 1px 6px rgba(0,0,0,.25);
           }
+          .hero-home .sub-banner {
+            display:inline-flex; align-items:center; gap:.6rem;
+            margin-top: .9rem; padding: .45rem .9rem; border-radius: 999px;
+            background: rgba(255,255,255,.10); border: 1px solid rgba(255,255,255,.28);
+            font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+            backdrop-filter: saturate(140%) blur(2px);
+          }
+          .hero-home .sub-banner .sep { opacity: .7 }
           @media (max-width:640px){
             .hero-home{ padding:4.5rem 0 2.5rem }
             .hero-home .headline{ font-size:1.9rem }
@@ -112,14 +120,25 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             CE Marked, China NMPA registered and Singapore HSA-cleared ColonAiQ®
           </div>
 
+          {/* Updated headline */}
           <h1 className="headline">
-            A patient-preferred blood test that can lift CRC screening uptake
+            ColonAiQ: Patient-preferred blood test for CRC screening, with higher early-stage sensitivity.
           </h1>
 
+          {/* Updated subhead with in-line "See Clinical Evidence" link */}
           <p className="sub">
-            Clinically validated blood-based screening that supports earlier
-            detection and timely colonoscopy — helping more people participate in
-            screening programmes.
+            ColonAiQ® is a clinically validated, non-invasive screening option that helps more people participate
+            and guides timely colonoscopy and earlier detection, helping save more lives.&nbsp;
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault()
+                onNavigate('clinical-evidence')
+              }}
+              style={{ color: '#fff', textDecoration: 'underline' }}
+            >
+              See Clinical Evidence.
+            </a>
           </p>
 
           <div className="cta">
@@ -140,6 +159,15 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             </button>
           </div>
 
+          {/* New Sub Banner */}
+          <div className="sub-banner" role="text">
+            <span>SCREENED IN TIME</span>
+            <span className="sep">|</span>
+            <span>SCOPED IN TIME</span>
+            <span className="sep">|</span>
+            <span>SAVED IN TIME</span>
+          </div>
+
           {/* High-contrast stats */}
           <div className="stats">
             <HeroStat value="86.1%" label="Sensitivity (all CRC)" />
@@ -148,18 +176,7 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           </div>
 
           <div className="footnote">
-            Data from peer-reviewed studies.{` `}
-            <a
-              href="#"
-              onClick={(e) => {
-                e.preventDefault()
-                onNavigate('clinical-evidence')
-              }}
-              style={{ color: '#fff', textDecoration: 'underline' }}
-            >
-              View Clinical Evidence
-            </a>
-            .
+            Data from peer-reviewed studies.
           </div>
         </div>
       </section>
@@ -175,7 +192,7 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               barriers compared with stool-based tests.
             </Tile>
             <Tile title="Improve participation">
-              Patient-friendly option can increase screening uptake — the first step
+              Patient-friendly option can increase screening uptake, the first step
               to catching disease earlier.
             </Tile>
             <Tile title="Enable earlier diagnosis &amp; prevention">
@@ -211,7 +228,7 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         <div className="container">
           <h2 className="section-title">How ColonAiQ® complements current options</h2>
 
-        {/* Visual */}
+          {/* Visual */}
           <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem' }}>
             <img
               src="/images/home/compare-blood-tube.webp"
