@@ -129,18 +129,8 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           <p className="sub">
             ColonAiQ® is a clinically validated, non-invasive screening option that helps more people participate
             and guides timely colonoscopy and earlier detection, helping save more lives.&nbsp;
-            <a
-              href="#"
-              onClick={(e) => {
-                e.preventDefault()
-                onNavigate('clinical-evidence')
-              }}
-              style={{ color: '#fff', textDecoration: 'underline' }}
-            >
-              See Clinical Evidence.
-            </a>
-          </p>
-
+            </p>
+            
           <div className="cta">
             <button className="btn btn-primary" onClick={() => onNavigate('patients')}>
               For Patients
