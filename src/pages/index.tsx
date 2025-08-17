@@ -244,8 +244,7 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               collection and lower early-stage sensitivity.
             </Tile>
             <Tile title="Colonoscopy">
-              Diagnostic gold standard and allows polyp removal; invasive
-              resource-intensive procedure used when indicated.
+              Gold standard for both diagnosis and early treatment. Colonoscopy not only detects colorectal cancer at its earliest stages, it also enables immediate removal of pre-cancerous polyps during the same procedure — truly Where Treatment Begins While Screening.
             </Tile>
           </div>
         </div>
