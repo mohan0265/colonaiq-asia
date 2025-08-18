@@ -1,4 +1,4 @@
-// src/pages/clinics-labs.tsx (or the same path/name you currently use)
+// src/pages/clinics-labs.tsx
 import React from 'react'
 import { Page } from '../lib/nav'
 
@@ -7,42 +7,49 @@ type Props = { onNavigate?: React.Dispatch<React.SetStateAction<Page>> }
 export default function ClinicsAndLabsPage({ onNavigate }: Props) {
   return (
     <div>
-      {/* Page-scoped styles to make cards full, aligned, and clinical */}
+      {/* Page-scoped styles (keeps your original classes; only enhances visuals) */}
       <style>{`
         .hero-gradient {
-          background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+          /* keep original gradient, add subtle image/overlay readability */
+          background:
+            linear-gradient(135deg, rgba(13,74,120,.78) 0%, rgba(16,103,160,.72) 100%),
+            radial-gradient(1200px 420px at 50% -120px, rgba(255,255,255,.08), transparent 60%),
+            linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
           color: var(--white);
           padding: 5rem 0;
           text-align: center;
         }
         .kicker {
           font-size: .95rem;
-          opacity: .9;
+          opacity: .95;
           letter-spacing: .02em;
+          text-shadow: 0 1px 6px rgba(0,0,0,.25);
         }
         .hero-title {
-          font-size: 2.2rem;
+          font-size: clamp(2rem, 3vw, 2.6rem);
           font-weight: 800;
           margin: .4rem 0 .5rem;
+          text-shadow: 0 10px 24px rgba(0,0,0,.25);
         }
 
         /* Panels */
         .panel {
           background: var(--white);
-          border: 1px solid #e6e8ee;
+          border: 1px solid rgba(15,23,42,.08);
           border-radius: 12px;
           padding: 1.1rem 1.15rem;
-          box-shadow: 0 6px 22px rgba(15, 23, 42, .06);
+          box-shadow: 0 12px 26px rgba(0,0,0,.06);
         }
         .panel.simple {
-          box-shadow: 0 4px 16px rgba(15, 23, 42, .05);
+          box-shadow: 0 10px 22px rgba(15,23,42,.05);
         }
         .panel h2, .panel h3, .panel h4 {
           margin: 0 0 .5rem;
         }
         .panel p { margin: .4rem 0; }
+        .link { color: var(--primary-blue); text-decoration: underline; text-underline-offset: 2px; }
 
-        /* Step cards (replace accordions, always open) */
+        /* Step cards (same structure, always open) */
         .steps {
           display: grid;
           grid-template-columns: repeat(2, minmax(0,1fr));
@@ -80,11 +87,8 @@ export default function ClinicsAndLabsPage({ onNavigate }: Props) {
         }
         .step-card li { margin: .2rem 0; }
 
-        /* Equal-height helpers in grids */
-        .grid-fit {
-          display: grid;
-          gap: 1rem;
-        }
+        /* Equal-height helpers in grids (unchanged API) */
+        .grid-fit { display: grid; gap: 1rem; }
         .grid-2-fit { grid-template-columns: repeat(2, minmax(0,1fr)); }
         .grid-3-fit { grid-template-columns: repeat(3, minmax(0,1fr)); }
         .grid-4-fit { grid-template-columns: repeat(4, minmax(0,1fr)); }
@@ -98,31 +102,33 @@ export default function ClinicsAndLabsPage({ onNavigate }: Props) {
           text-align: center;
         }
 
-        .image-card {
-          text-align: center;
-          border-radius: 12px;
-          overflow: hidden;
-        }
-        .image-card img {
-          width: 100%;
-          height: auto;
-          border-radius: 12px;
-          display: block;
+        /* Image cards */
+        .image-card { text-align: center; border-radius: 12px; overflow: hidden; }
+        .image-card img { width: 100%; height: auto; border-radius: 12px; display: block; }
+
+        .cta-center { text-align: center; }
+
+        /* Keep your site-wide .btn/.btn-primary, add safe fallback */
+        .btn.btn-primary {
+          background: var(--primary-blue);
+          border: 1px solid var(--secondary-blue);
+          color: #fff;
+          border-radius: 10px;
+          padding: .7rem 1.1rem;
+          font-weight: 700;
+          box-shadow: 0 10px 22px rgba(17,115,187,.18);
         }
 
-        .cta-center {
-          text-align: center;
-        }
-        .btn-ghost {
+        /* “Excel-style” headers for reagent tiles—non-breaking enhancement */
+        .panel.simple h4 {
           display: inline-block;
-          border: 1px solid rgba(13, 74, 120, .25);
-          padding: .7rem 1.1rem;
-          border-radius: 999px;
-          font-weight: 700;
-          color: #0b4a78;
-          background: #f7fbfe;
+          padding: 6px 10px;
+          border-radius: 10px;
+          background: linear-gradient(180deg,#fff3d6,#ffe7b1);
+          border: 1px solid #ffd98a;
+          color: #5b3b00;
+          margin-bottom: 8px;
         }
-        .btn-ghost:hover { background: #eef6fc; }
       `}</style>
 
       {/* Hero */}
@@ -222,7 +228,7 @@ export default function ClinicsAndLabsPage({ onNavigate }: Props) {
                 for diagnostic colonoscopy, aiding earlier detection and prevention.
               </p>
               <p style={{ fontSize: 14, color: 'var(--text-light)' }}>
-                Public pages do not include performance figures without direct citations. For peer-reviewed summaries and official announcements, please <a className="link" href="/contact">contact us</a>.
+                Public pages do not include performance figures without direct citations. For peer-reviewed summaries and official announcements, please <a className="link" href="/contact" onClick={(e)=>onNavigate?.('contact')}>contact us</a>.
               </p>
             </div>
           </div>
@@ -233,7 +239,7 @@ export default function ClinicsAndLabsPage({ onNavigate }: Props) {
       <section className="section" style={{ background: 'var(--bg-light)' }}>
         <div className="container">
           <h2 className="section-title" style={{ textAlign: 'center' }}>Setting Up a ColonAiQ® Testing Facility</h2>
-        <p className="section-subtitle">
+          <p className="section-subtitle">
             Key operational elements your team will align on during onboarding. Full documentation is provided under agreement.
           </p>
 
@@ -314,7 +320,7 @@ export default function ClinicsAndLabsPage({ onNavigate }: Props) {
             <p>
               A formally referenced bibliography, including peer-reviewed publications and official announcements,
               will be linked here upon permission. To request specific documentation, please{' '}
-              <a className="link" href="/contact">contact us</a>.
+              <a className="link" href="/contact" onClick={(e)=>onNavigate?.('contact')}>contact us</a>.
             </p>
           </div>
         </div>
@@ -330,9 +336,8 @@ export default function ClinicsAndLabsPage({ onNavigate }: Props) {
           <a
             className="btn btn-primary"
             href="/contact"
-            onClick={(e) => {
-              onNavigate?.('contact')
-            }}
+            onClick={(e) => { onNavigate?.('contact') }}
+            aria-label="Contact us about ColonAiQ partnership"
           >
             Contact Us
           </a>

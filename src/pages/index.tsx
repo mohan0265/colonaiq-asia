@@ -18,7 +18,9 @@ const Section: React.FC<{ children: React.ReactNode; light?: boolean }> = ({
   children,
   light,
 }) => (
-  <section className={light ? "section section--light" : "section"}>{children}</section>
+  <section className={light ? "section section--light" : "section"}>
+    {children}
+  </section>
 );
 
 const Container: React.FC<{ children: React.ReactNode; center?: boolean }> = ({
@@ -134,6 +136,22 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         }
         .hero__cta{ display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:12px }
 
+        /* RESPONSIBLE NOTICE (hero banner) */
+        .notice{
+          display:flex; gap:10px; align-items:flex-start;
+          margin: 12px auto 0; padding:12px 14px; border-radius:14px;
+          max-width: 980px;
+          border:1px solid #f3d27a;
+          background: rgba(255, 244, 214, .92);
+          color:#6b4c00;
+          line-height:1.55; font-size:14px;
+          box-shadow: 0 6px 18px rgba(0,0,0,.08);
+          backdrop-filter: saturate(140%) blur(2px);
+        }
+        .notice__icon{ margin-top:1px; flex:0 0 auto }
+        .notice__title{ font-weight:800; font-size:14px; margin:0 0 2px }
+        .notice__text{ margin:0 }
+
         .stats{ display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:14px }
         .stat{
           min-width:180px; text-align:center; color:var(--ink);
@@ -217,15 +235,15 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       <div className="hero">
         <Container center>
           <div className="kicker">
-            CE Marked, China NMPA registered and Singapore HSA‑cleared ColonAiQ®
+            CE Marked, China NMPA registered and Singapore HSA-cleared ColonAiQ®
           </div>
 
           <h1 className="hero__title">
-            ColonAiQ: Patient‑preferred blood test for CRC screening, with higher early‑stage sensitivity.
+            ColonAiQ: Patient-preferred blood test for CRC screening, with higher early-stage sensitivity.
           </h1>
 
           <p className="hero__sub">
-            ColonAiQ® is a clinically validated, non‑invasive screening option that helps
+            ColonAiQ® is a clinically validated, non-invasive screening option that helps
             more people participate and guides timely colonoscopy and earlier detection,
             helping save more lives.
           </p>
@@ -238,6 +256,24 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               variant="ghost"
               onClick={() => onNavigate("clinical-evidence")}
             />
+          </div>
+
+          {/* RESPONSIBLE SCREENING BANNER */}
+          <div className="notice" role="note" aria-label="Important screening information">
+            <div className="notice__icon" aria-hidden>
+              {/* inline triangle icon */}
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M12 9v4m0 4h.01M10.29 3.86L1.82 19a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <div className="notice__title">Important screening information</div>
+              <p className="notice__text">
+                No screening test is perfect. A negative ColonAiQ® result does not rule out colorectal cancer.
+                If you are 45 or older, or have symptoms or higher risk, speak to your doctor about colonoscopy.
+                Colonoscopy is the gold standard for finding and removing polyps.
+              </p>
+            </div>
           </div>
 
           <div className="hero__ribbon" role="text">
@@ -263,13 +299,13 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           <div className="grid-3">
             <InfoTile title="Reduce barriers" tone="blue">
               Simple blood draw (no bowel prep) lowers psychological and logistical barriers compared with
-              stool‑based tests.
+              stool-based tests.
             </InfoTile>
             <InfoTile title="Improve participation" tone="green">
-              Patient‑friendly option can increase screening uptake, the first step to catching disease earlier.
+              Patient-friendly option can increase screening uptake, the first step to catching disease earlier.
             </InfoTile>
             <InfoTile title="Enable earlier diagnosis & prevention" tone="amber">
-              Higher early‑stage sensitivity in studies supports timely colonoscopy, polyp removal and prevention.
+              Higher early-stage sensitivity in studies supports timely colonoscopy, polyp removal and prevention.
             </InfoTile>
           </div>
 
@@ -305,18 +341,18 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
           <div className="grid-3">
             <InfoTile title="ColonAiQ® (blood)" tone="blue">
-              Non‑invasive blood test; clinically validated performance including early‑stage sensitivity.
+              Non-invasive blood test; clinically validated performance including early-stage sensitivity.
               Scalable PCR workflow.
             </InfoTile>
 
             <InfoTile title="FIT (stool)" tone="green">
-              Non‑invasive, widely used; participation can be limited by stool collection and lower early‑stage
+              Non-invasive, widely used; participation can be limited by stool collection and lower early-stage
               sensitivity.
             </InfoTile>
 
             <InfoTile title="Colonoscopy" tone="amber">
               Gold standard for both diagnosis and early treatment. Colonoscopy not only detects colorectal cancer at
-              its earliest stages, it also enables immediate removal of pre‑cancerous polyps during the same procedure —
+              its earliest stages, it also enables immediate removal of pre-cancerous polyps during the same procedure,
               <strong> Where Treatment Begins While Screening.</strong>
             </InfoTile>
           </div>
@@ -346,9 +382,9 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               A standard venous sample at a participating clinic or lab.
             </InfoTile>
             <InfoTile title="3) Lab analysis" tone="blue">
-              DNA methylation assay using a PCR‑based workflow.
+              DNA methylation assay using a PCR-based workflow.
             </InfoTile>
-            <InfoTile title="4) Guided follow‑up" tone="amber">
+            <InfoTile title="4) Guided follow-up" tone="amber">
               Results can help prioritise diagnostic colonoscopy where appropriate.
             </InfoTile>
           </div>
@@ -362,7 +398,7 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
           <div className="grid-2">
             <InfoTile title="For public programmes" tone="green">
-              Use as a first‑line blood‑based screen for eligible adults. Positives triaged to colonoscopy; negatives
+              Use as a first-line blood-based screen for eligible adults. Positives triaged to colonoscopy, negatives
               continue routine intervals per guidelines.
             </InfoTile>
             <InfoTile title="For clinics & laboratories" tone="blue">
@@ -388,7 +424,7 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           <div style={{ display: "flex", justifyContent: "center", marginBottom: 12 }}>
             <img
               src="/images/home/evidence-colonmodel.webp"
-              alt="Colon model cross‑section illustrating early detection"
+              alt="Colon model cross-section illustrating early detection"
               loading="lazy"
               className="visual"
               style={{ maxWidth: 520 }}
@@ -401,7 +437,15 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             Find information for patients, or learn how to onboard your clinic or lab to offer ColonAiQ®.
           </p>
 
-          <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap", marginTop: 14 }}>
+          <div
+            style={{
+              display: "flex",
+              gap: 10,
+              justifyContent: "center",
+              flexWrap: "wrap",
+              marginTop: 14,
+            }}
+          >
             <button className="button" onClick={() => onNavigate("patients")}>
               For Patients
             </button>
